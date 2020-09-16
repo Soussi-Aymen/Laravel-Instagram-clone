@@ -10,10 +10,10 @@
         <div class="col-9 pt-5">
             <div class="d-flex justify-content-between align-items-baseline">
                 <h1> {{$user->username}}</h1>
-                <a href='/'> Add New Post </a>
+                <a href='/p/create'> Add New Post </a>
             </div>
             <div class="d-flex">
-                <div class="pr-5"><strong>324</strong> posts </div>
+                <div class="pr-5"><strong>{{$user->posts->count()}}</strong> posts </div>
                 <div class="pr-5"><strong>55.9k</strong> followers</div>
                 <div class="pr-5"><strong>281</strong> following</div>
             </div>    
@@ -28,15 +28,16 @@
         </div>
     </div>
     <div class="row pt-5">
-        <div class="col-4">
-            <img src="https://instagram.ftun12-1.fna.fbcdn.net/v/t51.2885-15/sh0.08/e35/c0.111.928.928a/s640x640/119049151_1045184425936383_2869652952601972349_n.jpg?_nc_ht=instagram.ftun12-1.fna.fbcdn.net&amp;_nc_cat=103&amp;_nc_ohc=1Y-9yskZQlgAX_2md_C&amp;oh=03231fe0a44f81b8d0506bc43de45fe4&amp;oe=5F88025F" class="w-100">
+    @foreach($user->posts as $post)    
+
+        <div class="col-4 pb-4">
+            <a href="/p/{{$post->id}}">
+                <img src="/storage/{{$post->image}}" class="w-100">
+            </a>
         </div>
-        <div class="col-4">
-            <img src="https://instagram.ftun12-1.fna.fbcdn.net/v/t51.2885-15/sh0.08/e35/c0.90.901.901a/s640x640/118989879_349217769449512_4959720715070608894_n.jpg?_nc_ht=instagram.ftun12-1.fna.fbcdn.net&_nc_cat=104&_nc_ohc=b3D2fELyNeoAX9IeQS6&oh=df865c8227822fa24c0f5e704c22f61d&oe=5F870BEA" class="w-100">
-        </div>
-        <div class="col-4">
-            <img src="https://instagram.ftun12-1.fna.fbcdn.net/v/t51.2885-15/e35/c95.0.560.560a/118614410_230664505046765_5604987870734821551_n.jpg?_nc_ht=instagram.ftun12-1.fna.fbcdn.net&_nc_cat=105&_nc_ohc=AfiKfQIlmdMAX-8e00o&oh=a363817928f750e6026be43250d16df2&oe=5F86AFAB" class="w-100">
-        </div>
+    @endforeach
+
+        
     </div>
 
 </div>
